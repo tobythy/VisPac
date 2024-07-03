@@ -12,9 +12,9 @@ public abstract class SavingPlan : MonoBehaviour
         get => TermsCheck() ? baseRate + bonusRate : bonusRate;
         set { }
     }
-    public float principal; // Perhaps should be changed to type Money - to be discussed
+    public float principal; 
     public float interestAmount; // interestAmount + principal = total amount
-
+    public float total { get => principal + interestAmount;}
     public virtual bool TermsCheck()
     {
         //TODO: if the terms are met, return true
@@ -25,27 +25,27 @@ public abstract class SavingPlan : MonoBehaviour
     public virtual void UpdateInterest(Money money, int period) // period in months
     {
         float total = interestAmount + principal;
-        money.gameObject.transform.LeanScale(money.updateSphereSize(total * interestRate * period), 2f);
+        money.gameObject.transform.LeanScale(money.UpdateSphereSize(total * interestRate * period), 2f);
     }
     
-    public void AddPrincipal(Money amount)
+    public void AddPrincipal(float amount)
     {
-        //TODO: merge Money to Principal
+        principal += amount;
     }
     
-    public void WithdrawPrincipal(float time)
+    public void WithdrawPrincipal(float amount)
     {
-        if (!fixedRate)
+        principal -= amount;
+        if (principal < 0)
         {
-            //TODO: instantiate a money prefab
-            Money temp = new Money(); // placeholder, delete after completing TODO
-            temp.moneyAmount = principal * time / 5; // Maximum dragging time = 5, or is it better to measure dragging distance?
-            //TODO: timed-dragging to withdraw money from principal
+            interestAmount += principal;
+            principal = 0;
         }
-        else
-        {
-            //TODO: prompt user that they cannot withdraw money from a fixed rate account
-        }
+    }
+    
+    public void CalculateInterest(float time)
+    {
+        //TODO: calculate interest and apply interest to interestAmount
     }
 
 }
