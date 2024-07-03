@@ -17,10 +17,6 @@ public class Money : MonoBehaviour
         return new Vector3(1, 1, 1) + new Vector3(moneyAmount, moneyAmount, moneyAmount) * .001f; // need to scale down
     }
     
-    private void OnTriggerEnter(Collider other)
-    {
-        Debug.Log(other.gameObject.name);
-    }
     
     public void SaveToPiggyBank()
     {

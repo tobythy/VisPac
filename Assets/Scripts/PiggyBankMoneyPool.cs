@@ -11,6 +11,7 @@ public class PiggyBankMoneyPool : MonoBehaviour
     public static PiggyBankMoneyPool instance;
     public Money currSaving;
     public SavingPlan savingPlan;
+    public GoalVisualisation goalVisualisation;
     
     //put under WhenSelect() - that's when the user selects the moneyPool, instantiate a new money sphere - whose size updates with its distance to moneyPool.
     // need to set up a maximum dragging distance 
@@ -43,12 +44,14 @@ public class PiggyBankMoneyPool : MonoBehaviour
     {
         savingPlan.AddPrincipal(money);
         SpawnNewMoneyPool();
+        goalVisualisation.UpdateGoalVisualisation();
     }
     
     public void WithdrawMoney(float money)
     {
         savingPlan.WithdrawPrincipal(money);
         SpawnNewMoneyPool();
+        goalVisualisation.UpdateGoalVisualisation();
     }
     
     // Start is called before the first frame update
@@ -57,14 +60,6 @@ public class PiggyBankMoneyPool : MonoBehaviour
         instance = this;
     }
     
-    private void OnTriggerEnter(Collider other)
-    {
-        //Debug.Log(other.gameObject.name);
-    }
-    private void OnTriggerStay(Collider other)
-    {
-        //Debug.Log(other.gameObject.name);
-    }
 
 
     // Update is called once per frame
