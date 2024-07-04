@@ -14,7 +14,7 @@ public class Money : MonoBehaviour
     public Vector3 UpdateSphereSize(float newAmount)
     {
         moneyAmount = newAmount;
-        return new Vector3(1, 1, 1) + new Vector3(moneyAmount, moneyAmount, moneyAmount) * .001f; // need to scale down
+        return new Vector3(1, 1, 1) + new Vector3(moneyAmount, moneyAmount, moneyAmount) * .0001f; // need to scale down
     }
     
     
