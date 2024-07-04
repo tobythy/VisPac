@@ -12,6 +12,7 @@ public class PiggyBankMoneyPool : MonoBehaviour
     public Money currSaving;
     public SavingPlan savingPlan;
     public GoalVisualisation goalVisualisation;
+    public Transform piggyAnchor;
     
     //put under WhenSelect() - that's when the user selects the moneyPool, instantiate a new money sphere - whose size updates with its distance to moneyPool.
     // need to set up a maximum dragging distance 
@@ -25,7 +26,9 @@ public class PiggyBankMoneyPool : MonoBehaviour
             temp.saved = true;
             temp.initialised = true;
             currSaving = temp;
-            temp.transform.LeanScale(currSaving.UpdateSphereSize(savingPlan.total), 2f);
+            transform.LeanScale(currSaving.UpdateSphereSize(savingPlan.total), 2f);
+            currSaving.transform.LeanScale(currSaving.UpdateSphereSize(savingPlan.total), 2f);
+            currSaving.transform.LeanMove(piggyAnchor.position, 2f);
         }
         else
         {
@@ -35,7 +38,9 @@ public class PiggyBankMoneyPool : MonoBehaviour
             }
             else
             {
+                transform.LeanScale(currSaving.UpdateSphereSize(savingPlan.total), 2f);
                 currSaving.transform.LeanScale(currSaving.UpdateSphereSize(savingPlan.total), 2f);
+                currSaving.transform.LeanMove(piggyAnchor.position, 2f);
             }
         }
     }

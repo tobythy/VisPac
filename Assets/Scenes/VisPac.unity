@@ -7924,6 +7924,37 @@ Transform:
   m_Children: []
   m_Father: {fileID: 595774769}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &714872783
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 714872784}
+  m_Layer: 0
+  m_Name: PiggyAnchor
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &714872784
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 714872783}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 4.57, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 543450652412446063}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &720927704
 GameObject:
   m_ObjectHideFlags: 0
@@ -15645,7 +15676,7 @@ BoxCollider:
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 3
-  m_Size: {x: 0.15, y: 0.1, z: 0.1}
+  m_Size: {x: 0.15, y: 0.15, z: 0.1}
   m_Center: {x: 0, y: 0, z: 0}
 --- !u!114 &1486990155
 MonoBehaviour:
@@ -15664,6 +15695,7 @@ MonoBehaviour:
   currSaving: {fileID: 0}
   savingPlan: {fileID: 1486990157}
   goalVisualisation: {fileID: 2101330050}
+  piggyAnchor: {fileID: 714872784}
 --- !u!54 &1486990156
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -22172,6 +22204,7 @@ Transform:
   m_LocalScale: {x: 0.01, y: 0.01, z: 0.01}
   m_ConstrainProportionsScale: 0
   m_Children:
+  - {fileID: 714872784}
   - {fileID: 248718681}
   m_Father: {fileID: 1486990152}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
