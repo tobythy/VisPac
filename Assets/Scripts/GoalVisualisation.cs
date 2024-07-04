@@ -12,13 +12,52 @@ public class GoalVisualisation : MonoBehaviour
         {
             if (PiggyBankMoneyPool.instance.savingPlan.total >= goalAmount * (i + 1) / goalProgress.Count)
             {
-                goalProgress[i].SetActive(true);
+                if (!goalProgress[i].activeSelf)
+                {
+                    goalProgress[i].SetActive(true);
+                    MovingIn(goalProgress[i]);
+                }
+                    
             }
             else
             {
-                goalProgress[i].SetActive(false);
+                if (goalProgress[i].activeSelf)
+                {
+                    MovingOut(goalProgress[i]);
+                    goalProgress[i].SetActive(false);
+                }
             }
         }
+    }
+    
+    void MovingIn(GameObject obj)
+    {
+        StartCoroutine(StartMovingIn(obj));
+    }
+	
+    IEnumerator StartMovingIn(GameObject obj)
+    {
+        obj.transform.LeanMove(obj.transform.position -
+                               new Vector3(0, 5, 0), 2f);
+        yield return new WaitForSeconds(2f);
+        obj.transform.LeanMove(obj.transform.position +
+                               new Vector3(0, 0.25f, 0), 0.25f);
+        yield return new WaitForSeconds(0.25f);
+        obj.transform.LeanMove(obj.transform.position -
+                               new Vector3(0, 0.25f, 0), 0.25f);
+        yield return new WaitForSeconds(0.25f);
+    }
+    
+    void MovingOut(GameObject obj)
+    {
+        StartCoroutine(StartMovingOut(obj));
+    }
+	
+    IEnumerator StartMovingOut(GameObject obj)
+    {
+        obj.transform.LeanMove(obj.transform.position +
+                               new Vector3(0, 5, 0), 2f);
+        yield return new WaitForSeconds(2f);
     }
     // Start is called before the first frame update
     void Start()
